@@ -1,0 +1,39 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-test-analyze:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/foundry-rs/foundry:latest
+      options: --user root
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install Slither Dependencies
+        shell: bash
+        run: |
+          apt-get update
+          apt-get install -y python3 python3-pip
+          pip3 install slither-analyzer
+
+      - name: Compile Contracts
+        shell: bash
+        run: forge build
+
+      - name: Run Tests & Generate Gas Report
+        shell: bash
+        run: forge test --gas-report
+
+      - name: Slither Analysis
+        shell: bash
+        run: slither .
