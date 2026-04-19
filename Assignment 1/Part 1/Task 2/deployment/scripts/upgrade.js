@@ -1,7 +1,7 @@
 const { ethers, upgrades } = require("hardhat");
 
 async function main() {
-  const proxyAddress = "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6"; 
+  const proxyAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"; 
   
   console.log("upgrading from V1 to V2");
   console.log("proxy address:", proxyAddress);

@@ -1,0 +1,8 @@
+{
+  "sepolia": {
+    "AITUVoting": {
+      "address": "0x333CCc861677b1B72cc561B0b7fC1b468b344CaB",
+      "startBlock": 10226351
+    }
+  }
+}
